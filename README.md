@@ -1,13 +1,8 @@
 # Ex02 Django ORM Web Application
-## Date: 06/03/2024
+## Date: 10-10-23
 
 ## AIM
-To develop a Django application to store and retrieve data from a Book database using Object Relational Mapping(ORM).
-
-## Entity Relationship Diagram
-
-![image](https://github.com/ibrahimfedahs/ORM/assets/150319493/a667fe03-61fe-4c39-81e7-abad5693d077)
-
+To develop a Django application to store and retrieve data from a Football Players database using Object Relational Mapping(ORM).
 
 ## DESIGN STEPS
 
@@ -21,35 +16,35 @@ Create a new app in Django project
 Enter the code for admin.py and models.py
 
 ### STEP 4:
-Execute Django admin and create details for 10 books
+Execute Django admin and create 10 Football players
 
 ## PROGRAM
 ```
-File: Models.py
+admin.py 
+
+from django.contrib import admin
+from .models import Football,FootballAdmin
+admin.site.register(Football,FootballAdmin)
+
+models.py
 
 from django.db import models
 from django.contrib import admin
+class Football (models.Model):
+    name=models.CharField(max_length=100,help_text="FOOTBALL PLAYER")
+    jerseyno=models.IntegerField()
+    country=models.CharField(max_length=100)
+    age=models.IntegerField()
+    place=models.IntegerField()
 
-class Employee (models.Model):
-    Book_DB=models.CharField(max_length=20,primary_key=True)
-    SNO=models.CharField(max_length=100)
-    NAME=models.IntegerField()
-    AUTHOR=models.EmailField()
-    PRICE=models.CharField(max_length=100)
+class FootballAdmin(admin.ModelAdmin):
+    list_display=('name','jerseyno','country','age','place')
 
-class EmployeeAdmin(admin.ModelAdmin):
-    list_display=('unique_number','name','age','email','job')
-
-File: Admin.py
-
-from django.contrib import admin
-from .models import Employee,EmployeeAdmin
-
-admin.site.register(Employee,EmployeeAdmin)
 ```
-## OUTPUT
-![Untitleddd](https://github.com/ibrahimfedahs/ORM/assets/150319493/0835e036-6e6a-45fd-8ee5-0c73ddbc366e)
 
+
+## OUTPUT
+![Alt text](<Screenshot (382).png>)
 
 
 
